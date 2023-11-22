@@ -11,30 +11,31 @@ void main() {
   );
 }
 
-class  MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Consumer<ChangeThemeProvider>(
       builder: (context, themeProvider, child) {
         return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: themeProvider.currentTheme,
-          home: Scaffold(
-            appBar: AppBar(
-              title: const Text("App"),
-            ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              ThemeData newTheme = themeProvider.currentTheme == ThemeData.light()
-                  ? ThemeData.dark()
-                  : ThemeData.light();
-              themeProvider.updateTheme(newTheme);
-            },
-            child: const Icon(Icons.lightbulb),
-          ),
-        ));
+            debugShowCheckedModeBanner: false,
+            theme: themeProvider.currentTheme,
+            home: Scaffold(
+              appBar: AppBar(
+                title: const Text("App"),
+              ),
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {
+                  ThemeData newTheme =
+                      themeProvider.currentTheme == ThemeData.light()
+                          ? ThemeData.dark()
+                          : ThemeData.light();
+                  themeProvider.updateTheme(newTheme);
+                },
+                child: const Icon(Icons.lightbulb),
+              ),
+            ));
       },
     );
   }
